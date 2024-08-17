@@ -14,7 +14,6 @@ public class TutBlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(Registration.IMPLOSION_BOMB_BLOCK.get());
         simpleBlock(Registration.HYDROGEN_BOMB_BLOCK.get());
     }
 }
