@@ -20,7 +20,7 @@ public class ReplacementExplosion {
     private static boolean canRemove(BlockState state, float testRadiusSquared, float radius, float removeChanceLastTwo) {
         boolean isLastTwoLayers = Math.sqrt(testRadiusSquared) > (radius - 2.0f);
         double removeChance = isLastTwoLayers ? removeChanceLastTwo : 1.0f;
-        return !state.isAir() && !state.is(Blocks.BEDROCK) && !state.is(Blocks.WATER) && !state.is(Blocks.LAVA) && Math.random() <= removeChance;
+        return !state.isAir() && !state.is(Blocks.BEDROCK) && Math.random() <= removeChance;
     }
 
     public static void explode(Vec3i center, int radius, ServerLevel world, BlockState replacementBlock, float replacementChance) {
