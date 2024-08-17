@@ -1,0 +1,16 @@
+{
+  "type": "mekanism:compressing",
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:osmium"
+  },
+  "itemInput": {
+    "amount": 8,
+    "ingredient": {
+      "item": "oppenminer:li_dt_fuel"
+    }
+  },
+  "output": {
+    "item": "oppenminer:ingot_li_dt_fuel"
+  }
+}

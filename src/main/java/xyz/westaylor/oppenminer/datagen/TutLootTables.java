@@ -13,6 +13,7 @@ public class TutLootTables extends VanillaBlockLoot {
 
     @Override
     protected void generate() {
+        dropSelf(Registration.FAKE_TNT_BLOCK.get());
         dropSelf(Registration.HIGH_EXPLOSIVE_BLOCK.get());
         dropSelf(Registration.IMPLOSION_BOMB_BLOCK.get());
         dropSelf(Registration.HYDROGEN_BOMB_BLOCK.get());
