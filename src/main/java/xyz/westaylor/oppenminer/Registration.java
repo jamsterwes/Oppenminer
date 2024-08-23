@@ -14,8 +14,8 @@ import xyz.westaylor.oppenminer.missiles.MissileItem;
 
 public class Registration {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OppenMinerMod.MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OppenMinerMod.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OppenminerMod.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OppenminerMod.MODID);
 
     // Plutonium Sphere
     public static final RegistryObject<Item> PLUTONIUM_SPHERE_ITEM = ITEMS.register("plutonium_sphere", () -> new Item(new Item.Properties().stacksTo(1).requiredFeatures()));

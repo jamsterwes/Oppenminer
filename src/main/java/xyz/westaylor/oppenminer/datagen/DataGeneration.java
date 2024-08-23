@@ -25,7 +25,7 @@ public class DataGeneration {
         TutBlockTags blockTags = new TutBlockTags(packOutput, lookupProvider, event.getExistingFileHelper());
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new TutItemTags(packOutput, lookupProvider, blockTags, event.getExistingFileHelper()));
-        generator.addProvider(event.includeServer(), new TutRecipes(packOutput));
+        // generator.addProvider(event.includeServer(), new TutRecipes(packOutput));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(TutLootTables::new, LootContextParamSets.BLOCK))));
     }

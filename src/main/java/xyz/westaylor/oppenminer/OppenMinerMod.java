@@ -2,7 +2,6 @@ package xyz.westaylor.oppenminer;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,26 +10,30 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import xyz.westaylor.oppenminer.datagen.DataGeneration;
+import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
+import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(OppenMinerMod.MODID)
-public class OppenMinerMod
+@Mod(OppenminerMod.MODID)
+public class OppenminerMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "oppenminer";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public OppenMinerMod()
+    public OppenminerMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        Registration.init(modEventBus);
+        
+        // Register blocks
+        OppenminerBlocks.register(modEventBus);
+        OppenminerItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(Registration::addCreative);
+        // modEventBus.addListener(Registration::addCreative);
         modEventBus.addListener(DataGeneration::generate);
     }
 
