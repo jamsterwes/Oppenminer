@@ -14,6 +14,5 @@ public class TutBlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        simpleBlock(OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.block());
     }
 }
