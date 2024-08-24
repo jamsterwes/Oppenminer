@@ -8,7 +8,7 @@ import xyz.westaylor.oppenminer.OppenminerMod;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class TutLootTables extends VanillaBlockLoot {
+public class OppenminerLootTables extends VanillaBlockLoot {
 
     @Override
     protected void generate() {

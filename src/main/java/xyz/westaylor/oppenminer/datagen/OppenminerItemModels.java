@@ -7,9 +7,9 @@ import xyz.westaylor.oppenminer.OppenminerMod;
 import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
 import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
-public class TutItemModels extends ItemModelProvider {
+public class OppenminerItemModels extends ItemModelProvider {
 
-    public TutItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
+    public OppenminerItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, OppenminerMod.MODID, existingFileHelper);
     }
 

@@ -5,9 +5,9 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import xyz.westaylor.oppenminer.OppenminerMod;
 
-public class TutBlockStates extends BlockStateProvider {
+public class OppenminerBlockStates extends BlockStateProvider {
 
-    public TutBlockStates(PackOutput output, ExistingFileHelper exFileHelper) {
+    public OppenminerBlockStates(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, OppenminerMod.MODID, exFileHelper);
     }
 

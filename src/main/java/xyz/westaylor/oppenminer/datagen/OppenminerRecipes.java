@@ -19,9 +19,9 @@ import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
 import java.util.function.Consumer;
 
-public class TutRecipes extends RecipeProvider {
+public class OppenminerRecipes extends RecipeProvider {
 
-    public TutRecipes(PackOutput packOutput) {
+    public OppenminerRecipes(PackOutput packOutput) {
         super(packOutput);
     }
 

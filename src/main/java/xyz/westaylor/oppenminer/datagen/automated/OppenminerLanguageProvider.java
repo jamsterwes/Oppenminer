@@ -14,9 +14,9 @@ import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
 import xyz.westaylor.oppenminer.registration.OppenminerItems;
 import xyz.westaylor.oppenminer.registries.RegistryBlockItem;
 
-public class TutLanguageProvider extends LanguageProvider {
+public class OppenminerLanguageProvider extends LanguageProvider {
 
-    public TutLanguageProvider(PackOutput output, String locale) {
+    public OppenminerLanguageProvider(PackOutput output, String locale) {
         super(output, OppenminerMod.MODID, locale);
     }
 

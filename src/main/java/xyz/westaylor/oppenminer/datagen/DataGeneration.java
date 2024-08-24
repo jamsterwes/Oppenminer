@@ -6,11 +6,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.data.event.GatherDataEvent;
-import xyz.westaylor.oppenminer.datagen.automated.TutLanguageProvider;
-import xyz.westaylor.oppenminer.datagen.automated.TutLootTables;
-import xyz.westaylor.oppenminer.datagen.unused.TutBlockStates;
-import xyz.westaylor.oppenminer.datagen.unused.TutBlockTags;
-import xyz.westaylor.oppenminer.datagen.unused.TutItemTags;
+import xyz.westaylor.oppenminer.datagen.automated.OppenminerLanguageProvider;
+import xyz.westaylor.oppenminer.datagen.automated.OppenminerLootTables;
+import xyz.westaylor.oppenminer.datagen.unused.OppenminerBlockStates;
+import xyz.westaylor.oppenminer.datagen.unused.OppenminerBlockTags;
+import xyz.westaylor.oppenminer.datagen.unused.OppenminerItemTags;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,15 +23,15 @@ public class DataGeneration {
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeClient(), new TutBlockStates(packOutput, event.getExistingFileHelper()));
-        generator.addProvider(event.includeClient(), new TutItemModels(packOutput, event.getExistingFileHelper()));
-        generator.addProvider(event.includeClient(), new TutLanguageProvider(packOutput, "en_us"));
+        generator.addProvider(event.includeClient(), new OppenminerBlockStates(packOutput, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new OppenminerItemModels(packOutput, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new OppenminerLanguageProvider(packOutput, "en_us"));
 
-        TutBlockTags blockTags = new TutBlockTags(packOutput, lookupProvider, event.getExistingFileHelper());
+        OppenminerBlockTags blockTags = new OppenminerBlockTags(packOutput, lookupProvider, event.getExistingFileHelper());
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new TutItemTags(packOutput, lookupProvider, blockTags, event.getExistingFileHelper()));
-        generator.addProvider(event.includeServer(), new TutRecipes(packOutput));
+        generator.addProvider(event.includeServer(), new OppenminerItemTags(packOutput, lookupProvider, blockTags, event.getExistingFileHelper()));
+        generator.addProvider(event.includeServer(), new OppenminerRecipes(packOutput));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(TutLootTables::new, LootContextParamSets.BLOCK))));
+                List.of(new LootTableProvider.SubProviderEntry(OppenminerLootTables::new, LootContextParamSets.BLOCK))));
     }
 }
