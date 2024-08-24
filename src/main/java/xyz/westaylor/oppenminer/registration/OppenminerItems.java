@@ -47,6 +47,7 @@ public class OppenminerItems {
     @ItemNameAndTab(name="Ballistic Missile (Hydrogen Bomb)", tab=CreativeModeTabsEnum.COMBAT)
     public static final RegistryObject<MissileItem> BALLISTIC_MISSILE_HYDROGEN_ITEM = ITEMS.register("ballistic_missile_hydrogen", () -> new MissileItem(OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.block(), new Item.Properties().stacksTo(9)));
 
+    // Called by OppenminerMod initialization
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

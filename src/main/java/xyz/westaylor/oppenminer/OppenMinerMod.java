@@ -3,6 +3,7 @@ package xyz.westaylor.oppenminer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import xyz.westaylor.oppenminer.datagen.DataGeneration;
 import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
 import xyz.westaylor.oppenminer.registration.OppenminerCreativeTabs;
+import xyz.westaylor.oppenminer.registration.OppenminerEntityTypes;
 import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -32,6 +34,7 @@ public class OppenminerMod
         // Register blocks
         OppenminerBlocks.register(modEventBus);
         OppenminerItems.register(modEventBus);
+        OppenminerEntityTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(OppenminerCreativeTabs::register);
