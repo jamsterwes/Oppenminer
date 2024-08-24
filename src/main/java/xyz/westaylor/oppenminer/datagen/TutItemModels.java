@@ -4,7 +4,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import xyz.westaylor.oppenminer.OppenminerMod;
-import xyz.westaylor.oppenminer.Registration;
+import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
+import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
 public class TutItemModels extends ItemModelProvider {
 
@@ -14,21 +15,21 @@ public class TutItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        // // Block Items
-        // withExistingParent(Registration.HIGH_EXPLOSIVE_BLOCK.getId().getPath(), modLoc("block/high_explosive"));
-        // withExistingParent(Registration.IMPLOSION_BOMB_BLOCK.getId().getPath(), modLoc("block/implosion_bomb"));
-        // withExistingParent(Registration.HYDROGEN_BOMB_BLOCK.getId().getPath(), modLoc("block/hydrogen_bomb"));
+        // Block Items
+        withExistingParent(OppenminerBlocks.EXPLOSIVE_HE_BLOCK.block.getId().getPath(), modLoc("block/explosive_he"));
+        withExistingParent(OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.block.getId().getPath(), modLoc("block/explosive_atomic"));
+        withExistingParent(OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.block.getId().getPath(), modLoc("block/explosive_hydrogen"));
 
-        // // Regular Items
-        // basicItem(Registration.PLUTONIUM_SPHERE_ITEM.get());
-        // basicItem(Registration.EXPLOSIVE_LENS_ITEM.get());
-        // basicItem(Registration.LI_DT_FUEL_ITEM.get());
-        // basicItem(Registration.INGOT_LI_DT_FUEL_ITEM.get());
-        // basicItem(Registration.FUSION_ASSEMBLY_ITEM.get());
-        // basicItem(Registration.BALLISTIC_SHELL_ITEM.get());
-        // basicItem(Registration.BALLISTIC_TNT_MISSILE_ITEM.get());
-        // basicItem(Registration.BALLISTIC_IMPLOSION_MISSILE_ITEM.get());
-        // basicItem(Registration.BALLISTIC_HIGH_EXPLOSIVE_MISSILE_ITEM.get());
-        // basicItem(Registration.BALLISTIC_HYDROGEN_MISSILE_ITEM.get());
+        // Regular Items
+        basicItem(OppenminerItems.PLUTONIUM_SPHERE_ITEM.get());
+        basicItem(OppenminerItems.EXPLOSIVE_LENS_ITEM.get());
+        basicItem(OppenminerItems.DUST_LI_DT_FUEL_ITEM.get());
+        basicItem(OppenminerItems.INGOT_LI_DT_FUEL_ITEM.get());
+        basicItem(OppenminerItems.FUSION_ASSEMBLY_ITEM.get());
+        basicItem(OppenminerItems.BALLISTIC_SHELL_ITEM.get());
+        basicItem(OppenminerItems.BALLISTIC_MISSILE_TNT_ITEM.get());
+        basicItem(OppenminerItems.BALLISTIC_MISSILE_HE_ITEM.get());
+        basicItem(OppenminerItems.BALLISTIC_MISSILE_ATOMIC_ITEM.get());
+        basicItem(OppenminerItems.BALLISTIC_MISSILE_HYDROGEN_ITEM.get());
     }
 }

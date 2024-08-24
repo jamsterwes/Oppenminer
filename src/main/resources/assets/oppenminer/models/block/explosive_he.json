@@ -2,8 +2,8 @@
   "credit": "Made with Blockbench",
   "texture_size": [32, 32],
   "textures": {
-    "4": "oppenminer:block/high_explosive",
-    "particle": "oppenminer:block/high_explosive"
+    "4": "oppenminer:block/explosive_he",
+    "particle": "oppenminer:block/explosive_he"
   },
   "elements": [
     {

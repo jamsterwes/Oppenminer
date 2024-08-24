@@ -1,7 +1,6 @@
 package xyz.westaylor.oppenminer.datagen;
 
 import java.lang.reflect.Field;
-import java.util.logging.Logger;
 
 import com.mojang.logging.LogUtils;
 
@@ -10,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
 import xyz.westaylor.oppenminer.OppenminerMod;
+import xyz.westaylor.oppenminer.datagen.annotations.BlockNameAndTab;
+import xyz.westaylor.oppenminer.datagen.annotations.ItemNameAndTab;
 import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
 import xyz.westaylor.oppenminer.registration.OppenminerItems;
 import xyz.westaylor.oppenminer.registries.RegistryBlockItem;

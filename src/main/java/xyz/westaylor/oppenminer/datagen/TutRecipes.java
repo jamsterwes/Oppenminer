@@ -1,18 +1,8 @@
 package xyz.westaylor.oppenminer.datagen;
 
-import com.mojang.logging.LogUtils;
 import mekanism.api.MekanismAPI;
-import mekanism.api.chemical.ChemicalUtils;
 import mekanism.api.chemical.gas.Gas;
-import mekanism.api.datagen.recipe.MekanismRecipeBuilder;
-import mekanism.api.datagen.recipe.builder.ChemicalChemicalToChemicalRecipeBuilder;
-import mekanism.api.datagen.recipe.builder.ChemicalCrystallizerRecipeBuilder;
-import mekanism.api.datagen.recipe.builder.ItemStackChemicalToItemStackRecipeBuilder;
 import mekanism.api.datagen.recipe.builder.PressurizedReactionRecipeBuilder;
-import mekanism.api.math.FloatingLong;
-import mekanism.api.recipes.ChemicalInfuserRecipe;
-import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
-import mekanism.api.recipes.ingredients.FluidStackIngredient;
 import mekanism.api.recipes.ingredients.creator.IngredientCreatorAccess;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -22,12 +12,11 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
-import xyz.westaylor.oppenminer.Registration;
+import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
+import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class TutRecipes extends RecipeProvider {
@@ -48,7 +37,7 @@ public class TutRecipes extends RecipeProvider {
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         // Plutonium Sphere
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.PLUTONIUM_SPHERE_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.PLUTONIUM_SPHERE_ITEM.get())
                 .pattern("ppp")
                 .pattern("p p")
                 .pattern("ppp")
@@ -58,31 +47,31 @@ public class TutRecipes extends RecipeProvider {
                 .save(consumer);
 
         // Explosive Lens
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.EXPLOSIVE_LENS_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.EXPLOSIVE_LENS_ITEM.get())
                 .pattern(" c ")
                 .pattern("hth")
                 .pattern("tut")
-                .define('h', Registration.HIGH_EXPLOSIVE_BLOCK_ITEM.get())
+                .define('h', OppenminerBlocks.EXPLOSIVE_HE_BLOCK.item())
                 .define('c', COPPER_INGOT_TAG)
                 .define('t', Items.TNT)
                 .define('u', URANIUM_INGOT_TAG)
                 .unlockedBy("has_high_explosive", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.HIGH_EXPLOSIVE_BLOCK_ITEM.get()).build()))
+                        ItemPredicate.Builder.item().of(OppenminerBlocks.EXPLOSIVE_HE_BLOCK.item()).build()))
                 .save(consumer);
 
         // Fusion Assembly
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.FUSION_ASSEMBLY_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.FUSION_ASSEMBLY_ITEM.get())
                 .pattern("dpd")
                 .pattern("dpd")
                 .pattern("dpd")
-                .define('d', Registration.INGOT_LI_DT_FUEL_ITEM.get())
+                .define('d', OppenminerItems.INGOT_LI_DT_FUEL_ITEM.get())
                 .define('p', PLUTONIUM_INGOT_TAG)
                 .unlockedBy("has_ingot_li_dt_fuel", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.INGOT_LI_DT_FUEL_ITEM.get()).build()))
+                        ItemPredicate.Builder.item().of(OppenminerItems.INGOT_LI_DT_FUEL_ITEM.get()).build()))
                 .save(consumer);
 
         // High Explosive
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.HIGH_EXPLOSIVE_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerBlocks.EXPLOSIVE_HE_BLOCK.item())
                 .pattern("ttt")
                 .pattern("ttt")
                 .pattern("ttt")
@@ -92,32 +81,32 @@ public class TutRecipes extends RecipeProvider {
                 .save(consumer);
 
         // Implosion Bomb
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.IMPLOSION_BOMB_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.item())
                 .pattern("eee")
                 .pattern("ese")
                 .pattern("eee")
-                .define('e', Registration.EXPLOSIVE_LENS_ITEM.get())
-                .define('s', Registration.PLUTONIUM_SPHERE_ITEM.get())
+                .define('e', OppenminerItems.EXPLOSIVE_LENS_ITEM.get())
+                .define('s', OppenminerItems.PLUTONIUM_SPHERE_ITEM.get())
                 .unlockedBy("has_explosive_lens_and_plutonium_sphere", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.EXPLOSIVE_LENS_ITEM.get()).build(),
-                        ItemPredicate.Builder.item().of(Registration.PLUTONIUM_SPHERE_ITEM.get()).build()))
+                        ItemPredicate.Builder.item().of(OppenminerItems.EXPLOSIVE_LENS_ITEM.get()).build(),
+                        ItemPredicate.Builder.item().of(OppenminerItems.PLUTONIUM_SPHERE_ITEM.get()).build()))
                 .save(consumer);
 
         // Hydrogen Bomb
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.HYDROGEN_BOMB_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.item())
                 .pattern("gIg")
                 .pattern("gFg")
                 .pattern("ggg")
-                .define('F', Registration.FUSION_ASSEMBLY_ITEM.get())
-                .define('I', Registration.IMPLOSION_BOMB_BLOCK.get())
+                .define('F', OppenminerItems.FUSION_ASSEMBLY_ITEM.get())
+                .define('I', OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.item())
                 .define('g', GOLD_INGOT_TAG)
                 .unlockedBy("has_fusion_assembly_and_implosion_bomb", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.FUSION_ASSEMBLY_ITEM.get()).build(),
-                        ItemPredicate.Builder.item().of(Registration.IMPLOSION_BOMB_BLOCK.get()).build()))
+                        ItemPredicate.Builder.item().of(OppenminerItems.FUSION_ASSEMBLY_ITEM.get()).build(),
+                        ItemPredicate.Builder.item().of(OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.item()).build()))
                 .save(consumer);
 
         // Ballistic Shell
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.BALLISTIC_SHELL_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.BALLISTIC_SHELL_ITEM.get())
                 .pattern("IbI")
                 .pattern("IbI")
                 .pattern("IbI")
@@ -129,62 +118,62 @@ public class TutRecipes extends RecipeProvider {
                 .save(consumer);
 
         // Ballistic Missile (TNT)
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.BALLISTIC_TNT_MISSILE_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.BALLISTIC_MISSILE_TNT_ITEM.get())
                 .pattern(" I ")
                 .pattern(" e ")
                 .pattern("isi")
                 .define('i', IRON_INGOT_TAG)
                 .define('I', Items.IRON_BLOCK)
-                .define('s', Registration.BALLISTIC_SHELL_ITEM.get())
+                .define('s', OppenminerItems.BALLISTIC_SHELL_ITEM.get())
                 .define('e', Items.TNT)
                 .unlockedBy("has_ballistic_shell_and_tnt", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.BALLISTIC_SHELL_ITEM.get()).build(),
+                        ItemPredicate.Builder.item().of(OppenminerItems.BALLISTIC_SHELL_ITEM.get()).build(),
                         ItemPredicate.Builder.item().of(Items.TNT).build()
                 ))
                 .save(consumer);
 
         // Ballistic Missile (High Explosive)
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.BALLISTIC_HIGH_EXPLOSIVE_MISSILE_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.BALLISTIC_MISSILE_HE_ITEM.get())
                 .pattern(" I ")
                 .pattern(" e ")
                 .pattern("isi")
                 .define('i', IRON_INGOT_TAG)
                 .define('I', Items.IRON_BLOCK)
-                .define('s', Registration.BALLISTIC_SHELL_ITEM.get())
-                .define('e', Registration.HIGH_EXPLOSIVE_BLOCK_ITEM.get())
+                .define('s', OppenminerItems.BALLISTIC_SHELL_ITEM.get())
+                .define('e', OppenminerBlocks.EXPLOSIVE_HE_BLOCK.item())
                 .unlockedBy("has_ballistic_shell_and_high_explosive", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.BALLISTIC_SHELL_ITEM.get()).build(),
-                        ItemPredicate.Builder.item().of(Registration.HIGH_EXPLOSIVE_BLOCK_ITEM.get()).build()
+                        ItemPredicate.Builder.item().of(OppenminerItems.BALLISTIC_SHELL_ITEM.get()).build(),
+                        ItemPredicate.Builder.item().of(OppenminerBlocks.EXPLOSIVE_HE_BLOCK.item()).build()
                 ))
                 .save(consumer);
 
         // Ballistic Missile (Fission)
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.BALLISTIC_IMPLOSION_MISSILE_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.BALLISTIC_MISSILE_ATOMIC_ITEM.get())
                 .pattern(" I ")
                 .pattern(" e ")
                 .pattern("isi")
                 .define('i', IRON_INGOT_TAG)
                 .define('I', Items.IRON_BLOCK)
-                .define('s', Registration.BALLISTIC_SHELL_ITEM.get())
-                .define('e', Registration.IMPLOSION_BOMB_BLOCK_ITEM.get())
+                .define('s', OppenminerItems.BALLISTIC_SHELL_ITEM.get())
+                .define('e', OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.item())
                 .unlockedBy("has_ballistic_shell_and_fission", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.BALLISTIC_SHELL_ITEM.get()).build(),
-                        ItemPredicate.Builder.item().of(Registration.IMPLOSION_BOMB_BLOCK_ITEM.get()).build()
+                        ItemPredicate.Builder.item().of(OppenminerItems.BALLISTIC_SHELL_ITEM.get()).build(),
+                        ItemPredicate.Builder.item().of(OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.item()).build()
                 ))
                 .save(consumer);
 
         // Ballistic Missile (Fusion)
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Registration.BALLISTIC_HYDROGEN_MISSILE_ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, OppenminerItems.BALLISTIC_MISSILE_HYDROGEN_ITEM.get())
                 .pattern(" I ")
                 .pattern(" e ")
                 .pattern("isi")
                 .define('i', IRON_INGOT_TAG)
                 .define('I', Items.IRON_BLOCK)
-                .define('s', Registration.BALLISTIC_SHELL_ITEM.get())
-                .define('e', Registration.HYDROGEN_BOMB_BLOCK_ITEM.get())
+                .define('s', OppenminerItems.BALLISTIC_SHELL_ITEM.get())
+                .define('e', OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.item())
                 .unlockedBy("has_ballistic_shell_and_fusion", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ItemPredicate.Builder.item().of(Registration.BALLISTIC_SHELL_ITEM.get()).build(),
-                        ItemPredicate.Builder.item().of(Registration.HYDROGEN_BOMB_BLOCK_ITEM.get()).build()
+                        ItemPredicate.Builder.item().of(OppenminerItems.BALLISTIC_SHELL_ITEM.get()).build(),
+                        ItemPredicate.Builder.item().of(OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.item()).build()
                 ))
                 .save(consumer);
 
@@ -194,7 +183,7 @@ public class TutRecipes extends RecipeProvider {
                 IngredientCreatorAccess.fluid().from(WATER_TAG, 1000),
                 IngredientCreatorAccess.gas().from(DEUTERIUM_GAS_TAG, 1000),
                 60,
-                Registration.LI_DT_FUEL_ITEM.get().getDefaultInstance()
+                OppenminerItems.DUST_LI_DT_FUEL_ITEM.get().getDefaultInstance()
         ).build(consumer, new ResourceLocation("mekanism", "reaction/li_dt"));
     }
 }

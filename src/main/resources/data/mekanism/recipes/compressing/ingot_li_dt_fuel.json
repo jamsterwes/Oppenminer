@@ -7,7 +7,7 @@
   "itemInput": {
     "amount": 8,
     "ingredient": {
-      "item": "oppenminer:li_dt_fuel"
+      "item": "oppenminer:dust_li_dt_fuel"
     }
   },
   "output": {

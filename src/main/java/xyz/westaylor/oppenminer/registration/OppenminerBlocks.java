@@ -10,7 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import xyz.westaylor.oppenminer.OppenminerMod;
-import xyz.westaylor.oppenminer.datagen.BlockNameAndTab;
+import xyz.westaylor.oppenminer.datagen.annotations.BlockNameAndTab;
 import xyz.westaylor.oppenminer.explosives.CustomExplosiveBlock;
 import xyz.westaylor.oppenminer.registries.CreativeModeTabsEnum;
 import xyz.westaylor.oppenminer.registries.RegistryBlockItem;
@@ -19,9 +19,13 @@ public class OppenminerBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, OppenminerMod.MODID);
 
     // == Explosive Blocks ==
+    public static final RegistryBlockItem<CustomExplosiveBlock> INTERNAL_TNT_BLOCK = registerBlock("internal_tnt", 
+        () -> new CustomExplosiveBlock(2, false, false), 
+        new Item.Properties());
+
     @BlockNameAndTab(name="High-Power TNT", tab=CreativeModeTabsEnum.COMBAT)
     public static final RegistryBlockItem<CustomExplosiveBlock> EXPLOSIVE_HE_BLOCK = registerBlock("explosive_he", 
-        () -> new CustomExplosiveBlock(4, false, false), 
+        () -> new CustomExplosiveBlock(8, false, false), 
         new Item.Properties());
 
     @BlockNameAndTab(name="Atomic Bomb", tab=CreativeModeTabsEnum.COMBAT)

@@ -13,6 +13,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import xyz.westaylor.oppenminer.datagen.DataGeneration;
 import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
+import xyz.westaylor.oppenminer.registration.OppenminerCreativeTabs;
 import xyz.westaylor.oppenminer.registration.OppenminerItems;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -33,7 +34,7 @@ public class OppenminerMod
         OppenminerItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        // modEventBus.addListener(Registration::addCreative);
+        modEventBus.addListener(OppenminerCreativeTabs::register);
         modEventBus.addListener(DataGeneration::generate);
     }
 

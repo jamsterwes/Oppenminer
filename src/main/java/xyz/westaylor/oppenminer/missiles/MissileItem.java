@@ -12,7 +12,7 @@ public class MissileItem extends Item {
     private CustomExplosiveBlock explosive;
 
     public MissileItem(CustomExplosiveBlock explosive, Item.Properties props) {
-        super(props.stacksTo(1));
+        super(props);
         this.explosive = explosive;
     }
 

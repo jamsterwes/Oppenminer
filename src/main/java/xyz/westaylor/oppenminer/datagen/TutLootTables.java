@@ -4,7 +4,6 @@ import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import xyz.westaylor.oppenminer.OppenminerMod;
-import xyz.westaylor.oppenminer.registration.OppenminerBlocks;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,9 +12,11 @@ public class TutLootTables extends VanillaBlockLoot {
 
     @Override
     protected void generate() {
-        dropSelf(OppenminerBlocks.EXPLOSIVE_ATOMIC_BLOCK.block());
-        dropSelf(OppenminerBlocks.EXPLOSIVE_HE_BLOCK.block());
-        dropSelf(OppenminerBlocks.EXPLOSIVE_HYDROGEN_BLOCK.block());
+        // TODO: change this
+        Iterable<Block> knownBlocks = getKnownBlocks();
+        for (Block block : knownBlocks) {
+            dropSelf(block);
+        }
     }
 
     @Override
