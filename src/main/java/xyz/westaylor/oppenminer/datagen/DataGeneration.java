@@ -6,6 +6,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.data.event.GatherDataEvent;
+import xyz.westaylor.oppenminer.datagen.automated.TutLanguageProvider;
+import xyz.westaylor.oppenminer.datagen.automated.TutLootTables;
+import xyz.westaylor.oppenminer.datagen.unused.TutBlockStates;
+import xyz.westaylor.oppenminer.datagen.unused.TutBlockTags;
+import xyz.westaylor.oppenminer.datagen.unused.TutItemTags;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,4 +1,4 @@
-package xyz.westaylor.oppenminer.datagen;
+package xyz.westaylor.oppenminer.datagen.unused;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

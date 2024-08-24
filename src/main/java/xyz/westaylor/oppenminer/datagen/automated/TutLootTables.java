@@ -1,4 +1,4 @@
-package xyz.westaylor.oppenminer.datagen;
+package xyz.westaylor.oppenminer.datagen.automated;
 
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.level.block.Block;

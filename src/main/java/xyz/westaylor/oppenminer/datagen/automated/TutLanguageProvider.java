@@ -1,4 +1,4 @@
-package xyz.westaylor.oppenminer.datagen;
+package xyz.westaylor.oppenminer.datagen.automated;
 
 import com.mojang.logging.LogUtils;
 
